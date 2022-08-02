@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PetStore.Logic
 {
-    internal interface IProductLogic
+    public interface IProductLogic
     {
         /// <summary>
         /// Add a product to the stores inventory
