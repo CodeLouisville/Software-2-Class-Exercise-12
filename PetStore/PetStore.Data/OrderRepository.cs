@@ -16,15 +16,15 @@ namespace PetStore.Data
             _dbContext = new ProductContext();
         }
 
-        public Order GetOrder(int id)
+        public async Task<Order> GetOrderAsync(int id)
         {
-            return _dbContext.Orders.Include(x=>x.Products).SingleOrDefault(x=>x.OrderId == id);
+            return await _dbContext.Orders.Include(x=>x.Products).SingleOrDefaultAsync(x=>x.OrderId == id);
         }
 
-        public void AddOrder(Order order)
+        public async Task AddOrderAsync(Order order)
         {
-            _dbContext.Orders.Add(order);
-            _dbContext.SaveChanges();
+            await _dbContext.Orders.AddAsync(order);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

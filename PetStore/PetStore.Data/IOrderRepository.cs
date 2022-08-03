@@ -2,7 +2,7 @@
 {
     public interface IOrderRepository
     {
-        void AddOrder(Order order);
-        Order GetOrder(int id);
+        Task AddOrderAsync(Order order);
+        Task<Order> GetOrderAsync(int id);
     }
 }

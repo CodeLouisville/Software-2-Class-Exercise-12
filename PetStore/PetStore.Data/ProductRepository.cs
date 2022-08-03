@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,20 +16,20 @@ namespace PetStore.Data
             _dbContext = new ProductContext();
         }
 
-        public void AddProduct(Product product)
+        public async Task AddProductAsync(Product product)
         {
-            _dbContext.Products.Add(product);
-            _dbContext.SaveChanges();
+            await _dbContext.Products.AddAsync(product);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Product GetProductById(int productId)
+        public async Task<Product> GetProductByIdAsync(int productId)
         {
-            return _dbContext.Products.SingleOrDefault(x => x.ProductId == productId);
+            return await _dbContext.Products.SingleOrDefaultAsync(x => x.ProductId == productId);
         }
 
-        public List<Product> GetAllProducts()
+        public async Task<List<Product>> GetAllProductsAsync()
         {
-            return _dbContext.Products.ToList();
+            return await _dbContext.Products.ToListAsync();
         }
     }
 }

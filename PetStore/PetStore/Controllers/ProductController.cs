@@ -15,15 +15,15 @@ namespace PetStore.Controllers
         }
 
         [HttpGet("{action}/{id}")]
-        public IActionResult GetProduct(int id)
+        public async Task<IActionResult> GetProduct(int id)
         {
-            return new JsonResult(_productLogic.GetProductById(id));
+            return new JsonResult(await _productLogic.GetProductByIdAsync(id));
         }
 
         [HttpGet("{action}/{orderId}")]
-        public IActionResult GetOrder(int orderId)
+        public async Task<IActionResult> GetOrder(int orderId)
         {
-            return new JsonResult(_productLogic.GetOrder(orderId));
+            return new JsonResult(await _productLogic.GetOrderAsync(orderId));
         }
     }
 }

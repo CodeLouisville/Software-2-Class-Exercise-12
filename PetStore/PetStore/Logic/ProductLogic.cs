@@ -21,33 +21,33 @@ namespace PetStore
             _orderRepo = orderRepository;
         }
 
-        public void AddProduct(Product product)
+        public async Task AddProductAsync(Product product)
         {
             var validator = new ProductValidator();
             if (validator.Validate(product).IsValid)
             {
-                _productRepo.AddProduct(product);
+                await _productRepo.AddProductAsync(product);
             }
         }
 
-        public List<Product> GetAllProducts()
+        public async Task<List<Product>> GetAllProductsAsync()
         {
-            return _productRepo.GetAllProducts();
+            return await _productRepo.GetAllProductsAsync();
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
-            return _productRepo.GetProductById(id);
+            return await _productRepo.GetProductByIdAsync(id);
         }
 
-        public void AddOrder(Order order)
+        public async Task AddOrderAsync(Order order)
         {
-            _orderRepo.AddOrder(order);
+            await _orderRepo.AddOrderAsync(order);
         }
 
-        public Order GetOrder(int id)
+        public async Task<Order> GetOrderAsync(int id)
         {
-            return _orderRepo.GetOrder(id);
+            return await _orderRepo.GetOrderAsync(id);
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     public interface IProductRepository
     {
-        void AddProduct(Product product);
-        Product GetProductById(int productId);
+        Task AddProductAsync(Product product);
+        Task<Product> GetProductByIdAsync(int productId);
 
-        public List<Product> GetAllProducts();
+        Task<List<Product>> GetAllProductsAsync();
     }
 }
